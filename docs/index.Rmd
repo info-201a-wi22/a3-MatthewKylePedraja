@@ -1,0 +1,98 @@
+---
+title: "Assignment 3: Incarceration"
+author: "Matthew Kyle Pedraja"
+date: "2/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r include=FALSE}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(lintr)
+library(maps)
+library(mapproj)
+source("analysis.R")
+```
+## Introduction
+
+In this report of the [Incarcerations Comma Separated Value file](https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv), I am going to analyze the problem domain regarding prison population rates in the South, a region that is historically deeply-rooted in systemic and institutional racism. Within the data set, I am going to analyze each specific race's prison population rate on average in order to find which race had either the highest or lowest jail or prison population rate, as well as finding the state that has the highest prison population rate within a specific year of my choosing, additionally exploring that state to provide more details regarding the prison and jail population rates for certain races mentioned in the data set. Below are the variables I will be using in order to achieve the tasks mentioned above: 
+
+* Year
+  * year
+
+* State
+  * state
+
+* Highest State Prison Population Rates in 1990
+  * state_highest_prison_population_rate_1990
+  * state_highest_population_rate_number
+  * total_prison_pop_rate
+
+* Race Jail Population Averages
+  * aapi_jail_pop_mean
+  * black_jail_pop_mean
+  * latinx_jail_pop_mean
+  * native_jail_pop_mean
+  * white_jail_pop_mean
+
+* Race Prison Population Averages
+  * aapi_prison_pop_mean
+  * black_prison_pop_mean
+  * latinx_prison_pop_mean
+  * native_prison_pop_mean
+  * white_prison_pop_mean
+
+Both the Race and Jail Population averages variables will be used to find the highest and lowest population rate averages for each respective institution, which will help us find the race that is being either marginalized greatly or not as marginalized in the Incarceration system of the United States, specifically in the South.
+
+## Summary Statistics
+
+The state that had the highest prison population rate in one county in 1990 is **`r (state_highest_prison_population_rate_1990)`**, with a prison population rate in that county of **`r (state_highest_population_rate_number)`**.
+
+Black people had the highest jail population rate on average in the South, with a jail population rate of **`r (black_jail_pop_mean)`**. 
+
+White people had the lowest jail population rate on average in the South, with only **`r (white_jail_pop_mean)`**, which is significantly smaller than the population rate of black people any other race that is listed in the data set, which showcases how marginalized minority groups are within the United States in regards to rates and proportions of the population being in jail.
+
+Black people had the highest prison population rate on average in the South, with a prison population rate of **`r (black_prison_pop_mean)`**. 
+
+Asian American and Pacific Islander people (aapi) on average had the lowest prison population in the South, with a prison population rate of **`r (aapi_prison_pop_mean)`**.
+
+#### Additional Statistics
+Native people (Native Americans) had a relatively high jail population rate average of **`r (native_jail_pop_mean)`**, while their prison population rate average was significantly smaller, with a population rate of **`r (native_prison_pop_mean)`**.
+```{r include=FALSE}
+state_highest_prison_population_rate_1990
+state_highest_population_rate_number
+black_jail_pop_mean
+white_jail_pop_mean
+aapi_prison_pop_mean
+native_jail_pop_mean
+native_prison_pop_mean
+```
+
+## Trend over Time chart
+```{r echo=FALSE}
+line_chart
+```
+
+The line chart above showcases the Prison Population Rates for each race over time in Tennessee, starting from 1990 to 2016, which is the state we found which had the highest prison population rate in 1990. This graph was made in order to showcase a huge discrepancy of prison population rates over time in Tennessee among black, white, latinx, and native people, specifically citing Tennessee as the focused location due to being a Southern State with the highest prison population rate in one county. As we can see from the graph, Black people had the highest peak prison population rates, which occurred in 1990. The trend shows the prison population rate sharply decreasing in one year, however the rates increased over time, way above any other race. Native people had the second highest prison population rate increase over time, where it steadily increased starting in the early 2000s. White people, in contrast, had a small increase in their prison population rate in Tennessee that slowly started within the 2000s, which may be a result of institutionalized racism that stemmed especially in the South, despite being the majority of the population in the United States as a whole. Latinx people had the lowest prison population rate over time, which may be a result of a smaller total population of latinx people that live in Tennessee.
+
+## Variable Comparison Chart
+```{r echo=FALSE}
+scatterplot
+```
+
+The scatter plot above reveals a ratio between the Prison vs Jail population rates of black people in Tennessee, starting from 1990 to 2018. This graph was included with another distinction made to Tennessee to showcase the trends between the prison and jail population rates, in order to find out if they had a correlation with each other, due to jail being used as an institution for lesser crimes, and prison being an institution for serious crimes. The graph showcases a strong positive correlation, where both the variables of the prison and jail populations rates both increase, which showcases a correlation and a bit of a ratio between the two variables. However, some points are spread apart in the graph, which lowers the positive correlation by a bit.
+
+## Map Chart
+```{r echo=FALSE}
+map_chart
+```
+
+The map chart above focuses on the Southern region of the United States, showcasing the highest black jail population rate that each county ever recorded within each Southern state. This visualization was produced in order to provide more context on the jail population rates of black people in the South as a whole, and figuring out where in the south which county had the highest ever jail population rate of black people. From the map, it can be seen that the counties with the relatively highest jail population rates of black people are Southeast, with the county with the largest jail population rate of black people in the bottom of the region, while the counties southwest have a relatively smaller population in comparison, albeit some exceptions in the top half of the chart east.
+
+
+
+
